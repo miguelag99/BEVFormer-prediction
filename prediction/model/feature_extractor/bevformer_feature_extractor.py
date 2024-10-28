@@ -4,7 +4,6 @@ import torch.nn as nn
 from prediction.model.feature_extractor.bevformer import BEVFormerTransformer
 from prediction.model.img_encoder import (EncoderEfficientNet, ResNetFPNEncoder,
                                           TimmFPNEncoder)
-from prediction.utils.network import pack_sequence_dim, unpack_sequence_dim
 from prediction.utils.geometry import (VoxelsSumming,
                                        calculate_birds_eye_view_parameters,
                                        cumulative_warp_features)
@@ -33,6 +32,7 @@ class BEVFormerFeatureExtractor(nn.Module):
                  ca_num_points: int = 8,
                  ca_num_levels: int = 1,
                  ca_dropout: float = 0.1,
+                 ca_im2col_step: int = 64,
                  ffn_num_fcs: int = 2,
                  ffn_dropout: float = 0.1,  
                  ):
@@ -104,6 +104,7 @@ class BEVFormerFeatureExtractor(nn.Module):
         self.ca_num_points = ca_num_points
         self.ca_num_levels = ca_num_levels
         self.ca_dropout = ca_dropout
+        self.ca_im2col_step = ca_im2col_step
         self.ffn_num_fcs = ffn_num_fcs
         self.ffn_dropout = ffn_dropout
         
@@ -121,6 +122,7 @@ class BEVFormerFeatureExtractor(nn.Module):
             ca_num_points = ca_num_points,
             ca_num_levels = ca_num_levels,
             ca_dropout = 0.1,
+            ca_im2col_step=ca_im2col_step,
             ffn_num_fcs = ffn_num_fcs,
             ffn_dropout = 0.1,    
         )

@@ -58,6 +58,7 @@ class BEVFormerPredictor(nn.Module):
                 ca_num_points = self.cfg.MODEL.FEATURE_EXTRACTOR.CA_NUM_POINTS,
                 ca_num_levels = self.cfg.MODEL.FEATURE_EXTRACTOR.CA_NUM_LEVELS,
                 ca_dropout = 0.1,
+                ca_im2col_step=self.cfg.MODEL.FEATURE_EXTRACTOR.CA_IM2COL_STEP,
                 ffn_num_fcs = self.cfg.MODEL.FEATURE_EXTRACTOR.FFN_NUM_FCS,
                 ffn_dropout = 0.1,    
         )

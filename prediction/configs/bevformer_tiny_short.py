@@ -34,6 +34,7 @@ model_cfg.MODEL = SimpleNamespace(
             SA_NUM_POINTS = 4,
             CA_NUM_LEVELS = 1,
             CA_NUM_POINTS = 8,
+            CA_IM2COL_STEP = 256,
             FFN_NUM_FCS = 2,
         ),
                 

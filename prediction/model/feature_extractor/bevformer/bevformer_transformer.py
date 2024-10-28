@@ -24,6 +24,7 @@ class BEVFormerTransformer(nn.Module):
         ca_num_points: int = 8,
         ca_num_levels: int = 1,
         ca_dropout: float = 0.1,
+        ca_im2col_step: int = 64,
         ffn_num_fcs: int = 2,
         ffn_dropout: float = 0.1,    
     ) -> None:
@@ -41,6 +42,7 @@ class BEVFormerTransformer(nn.Module):
         self.ca_num_points = ca_num_points
         self.ca_num_levels = ca_num_levels
         self.ca_dropout = ca_dropout
+        self.ca_im2col_step = ca_im2col_step
         self.ffn_num_fcs = ffn_num_fcs
         self.ffn_dropout = ffn_dropout
         
@@ -64,6 +66,7 @@ class BEVFormerTransformer(nn.Module):
                     ca_num_points=ca_num_points,
                     ca_num_levels=ca_num_levels,
                     ca_dropout=ca_dropout,
+                    ca_im2col_step=ca_im2col_step,
                     ffn_num_fcs=ffn_num_fcs,
                     ffn_dropout=ffn_dropout,
                 )
